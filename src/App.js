@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+
 import './App.css';
+import MapChart from "./Components/Map";
+import React, { useState } from "react";
+import MapToolTip from "./Components/MapToolTip";
 
 function App() {
+
+  const [tooltipContent, setTooltipContent] = useState({
+    name: "",
+    co2: ""
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className = "App">
+        <header className = "App-header">
+          <MapChart setTooltipContent = { setTooltipContent }/>
+          {tooltipContent && <MapToolTip tooltipContent = { tooltipContent }/> }
+        </header>
+      </div>
   );
 }
 
